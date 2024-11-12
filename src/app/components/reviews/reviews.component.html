@@ -1,0 +1,27 @@
+<h2>Valoración de la Propiedad</h2>
+<p>Propietario: {{ property.owner }}</p>
+<p>Dirección: {{ property.address }}</p>
+<p>Descripción: {{ property.description }}</p>
+
+<h3>Valoraciones de otros usuarios</h3>
+
+<!-- Lista de valoraciones con paginado -->
+<ul>
+  <li *ngFor="let rating of ratings | paginate: { itemsPerPage: limit, currentPage: page }">
+    {{ rating }} / 5
+  </li>
+</ul>
+
+<!-- Paginación -->
+<div class="pagination-container">
+    <pagination-controls 
+    (pageChange)="page = $event" 
+    [totalItems]="totalReviews" 
+    [itemsPerPage]="limit">
+  </pagination-controls>  
+</div>
+
+<h3>Tu valoración</h3>
+<input type="number" [(ngModel)]="userRating" min="0" max="5">
+<button (click)="submitRating()">Enviar Valoración</button>
+<button (click)="closeDialog()">Cerrar</button>

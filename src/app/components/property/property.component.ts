@@ -97,10 +97,6 @@ property:any;
                 // Assign all users to this.users
             this.desplegado = new Array(this.users.length).fill(false);  // Initialize desplegado
           }
-          
-        
-      
-      
     );
   }
 
